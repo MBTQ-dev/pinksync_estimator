@@ -9,6 +9,11 @@ import communicationRoutes from './api/communication-routes';
 import realEstateRoutes from './api/real-estate-routes';
 import insuranceRoutes from './api/insurance-routes';
 import syncRoutes from './api/sync-routes';
+import v0ToolsProjectsRoutes from './api/v0-tools-projects';
+import v0ToolsChatsRoutes from './api/v0-tools-chats';
+import v0ToolsGenerateRoutes from './api/v0-tools-generate';
+import v0ToolsDeploymentsRoutes from './api/v0-tools-deployments';
+import v0ToolsValidateRoutes from './api/v0-tools-validate';
 
 // Set up WebSocket connections (for real-time communication)
 const setupWebSockets = (server: Server) => {
@@ -66,6 +71,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use('/api/real-estate', realEstateRoutes);
   app.use('/api/insurance', insuranceRoutes);
   app.use('/api/sync', syncRoutes);
+  
+  // V0 Tools API routes
+  app.use('/api/v0-tools/projects', v0ToolsProjectsRoutes);
+  app.use('/api/v0-tools/chats', v0ToolsChatsRoutes);
+  app.use('/api/v0-tools/generate', v0ToolsGenerateRoutes);
+  app.use('/api/v0-tools/deployments', v0ToolsDeploymentsRoutes);
+  app.use('/api/v0-tools/validate', v0ToolsValidateRoutes);
   
   // API health check
   app.get('/api/health', (_req, res) => {
