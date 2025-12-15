@@ -29,7 +29,7 @@ export async function checkRateLimit(
     // Calculate the window start time
     const windowStart = new Date(Date.now() - RATE_LIMIT_WINDOW);
 
-    // Clean up old records outside the window
+    // Clean up old records outside the window (TODO: Move to periodic cleanup job for better performance)
     await db
       .delete(rateLimitRecords)
       .where(sql`${rateLimitRecords.timestamp} < ${windowStart} AND ${rateLimitRecords.identifier} = ${identifier} AND ${rateLimitRecords.action} = ${action}`);

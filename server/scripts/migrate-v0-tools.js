@@ -57,6 +57,7 @@ const migrations = [
         updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
         metadata JSONB DEFAULT '{}'::jsonb,
         CONSTRAINT fk_v0_chats_project FOREIGN KEY (project_id) REFERENCES v0_projects(id) ON DELETE CASCADE,
+        -- Self-referencing foreign key for chat forking: parent_chat_id references the original chat
         CONSTRAINT fk_v0_chats_parent FOREIGN KEY (parent_chat_id) REFERENCES v0_chats(id) ON DELETE SET NULL
       );
       

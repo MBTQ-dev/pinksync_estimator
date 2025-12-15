@@ -53,6 +53,7 @@ router.post('/', requireAuth, async (req: Request, res: Response) => {
 
     // TODO: Integrate with actual deployment platform (Vercel, Netlify, etc.)
     // For now, simulate deployment process
+    // Note: Using setTimeout creates an untracked promise; in production, use a proper job queue
     setTimeout(async () => {
       try {
         // Simulate successful deployment
@@ -74,6 +75,7 @@ router.post('/', requireAuth, async (req: Request, res: Response) => {
           .where(eq(v0Deployments.id, deployment.id));
       } catch (error) {
         console.error('Error updating deployment:', error);
+        // In production, this should be handled by a job queue with proper retry logic
       }
     }, 3000); // Simulate 3 second deployment
 
