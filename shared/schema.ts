@@ -2,6 +2,9 @@ import { pgTable, text, serial, integer, boolean, timestamp, jsonb, pgEnum } fro
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
+// Export v0 tools schema
+export * from "./v0ToolsSchema";
+
 // User schema
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
