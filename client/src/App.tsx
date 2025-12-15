@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFoundPage from "@/pages/NotFoundPage";
 import Dashboard from "@/pages/Dashboard";
 import PlatformConnections from "@/pages/PlatformConnections";
+import V0Tools from "@/pages/V0Tools";
 import { AppProvider } from "./contexts/AppContext";
 import Layout from "@/components/Layout";
 import { useAuth } from "./hooks/useAuth";
@@ -40,6 +41,9 @@ function Router() {
         <Route path="/" component={Dashboard} />
         <Route path="/sync">
           <ProtectedRoute component={PlatformConnections} />
+        </Route>
+        <Route path="/v0-tools">
+          <ProtectedRoute component={V0Tools} />
         </Route>
         <Route path="/documents">
           <ProtectedRoute component={() => <div className="container py-10"><h1 className="text-3xl font-bold">Documents</h1><p className="text-muted-foreground mt-2">Coming soon</p></div>} />
